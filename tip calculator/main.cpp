@@ -1,45 +1,46 @@
 #include <iostream>
 #include <string>
 using namespace std;
+
 int main(){
-//variable to make this code oprational
+//needed varaiable to work
     int Total_bill;
     float Tip_percentage;
-    float Bill_after_tip;
+    float Total_bill_after_tip;
 
-//takeing total bill ammount
+// a loop that ask for the total bill and then ask if. what you enterd is correct
     while (true)
     {
         cout << "what is the total bill: ";
         cin >> Total_bill;
-        cout<<"your total is: "<< Total_bill<< endl;
+        cout << "you entered " << Total_bill << endl;
 
-        string confirm_total_bill_ammount;
-        cout<<"is this correct(y/n): ";
-        cin >> confirm_total_bill_ammount;
-        if(confirm_total_bill_ammount == "y"){
+        string confirm_total_bill;
+        cout << "is this correct(y/n): ";
+        cin >> confirm_total_bill;
+        if (confirm_total_bill == "y"){
             break;
         }
     }
-    
-//taking the tip ammount 
-while (true)
-{
-    cout << "how much do you what to tip: ";
-    cin >> Tip_percentage;
-    cout << "you what to tip " << Tip_percentage << " %" << endl;
 
-    string confirm_Tip_percentage;
-    cout << "is this correct(y/n): ";
-    cin >> confirm_Tip_percentage;
-    if (confirm_Tip_percentage == "y"){
-        break;
+// a loop like the pervivises one but this one for for taking and confirming the input of tip percentage
+    while (true)
+    {
+        cout << "how much do you what to tip (in %): ";
+        cin >> Tip_percentage;
+        cout << Tip_percentage << endl;
+
+        string confirm_tip_percentage;
+            cout << "is this correct(y/n): ";
+            cin >> confirm_tip_percentage;
+            if (confirm_tip_percentage == "y"){
+                break;
+            }
     }
-}
+    
+// this is to calcula the total bill after tip 
+    Total_bill_after_tip = Total_bill + (Total_bill*Tip_percentage/100);
+    cout << "you total bill after tip is: " << Total_bill_after_tip << endl; 
 
-//calcutating the total bill after bill 
-    Bill_after_tip = Total_bill + (Total_bill*Tip_percentage/100);
-
-    cout << "you bill after tip is: " << Bill_after_tip;
     return 0;
 }
