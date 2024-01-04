@@ -26,9 +26,8 @@
 
         // Loop to ask how many times to repeat the What_to_say variable
         while (true) {
-            cout << "How many times do I say: " << What_to_say << endl;
+            cout << "How many times do I say: " << What_to_say;
             cin >> How_many_times_to_say;
-            cout << How_many_times_to_say << endl;
 
             string confirm_HMTS;
             cout << "Is this correct? (y/n): ";
