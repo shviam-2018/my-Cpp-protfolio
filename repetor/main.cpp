@@ -1,51 +1,47 @@
-    #include <iostream>
-    #include <string>
-    using namespace std;
+#include <iostream>
+#include <string>
+using namespace std;
 
-    // Function prototype
-    void displayResult(const string& message, int times);
+void displayresult(const string& message, int times);
 
-    int main() {
-        // Variables for this project
-        string What_to_say;
-        int How_many_times_to_say;
+int main(){
+    string What_to_say;
+    int times;
 
-        // Loop to ask the user what they want to say
-        while (true) {
-            cout << "What do you want me to say: ";
-            cin >> What_to_say;
-            cout << What_to_say << endl;
+    while (true)
+    {
+        cout << "what do youo what me to say: ";
+        cin >> What_to_say;
+        cout << "you what to say: "<<What_to_say<<endl;
 
-            string confirm_WTS;
-            cout << "Is this correct? (y/n): ";
-            cin >> confirm_WTS;
-            if (confirm_WTS == "y") {
-                break;
-            }
+        string confirm_WTS;
+        cout<<"is this correct(y/n): ";
+        cin >> confirm_WTS;
+        if(confirm_WTS == "y"){
+            break;
         }
-
-        // Loop to ask how many times to repeat the What_to_say variable
-        while (true) {
-            cout << "How many times do I say: " << What_to_say;
-            cin >> How_many_times_to_say;
-
-            string confirm_HMTS;
-            cout << "Is this correct? (y/n): ";
-            cin >> confirm_HMTS;
-            if (confirm_HMTS == "y") {
-                break;
-            }
-        }
-
-        // Function call to display the result
-        displayResult(What_to_say, How_many_times_to_say);
-
-        return 0;
     }
 
-    // Function to display the What_to_say and How_many_times_to_say
-    void displayResult(const string& message, int times) {
-        for (int i = 0; i < times; ++i) {
-            cout << i << " " << message << endl;
+    while (true)
+    {
+        cout<<"how many time do you what me to say: "<<What_to_say<<endl;
+        cout<<"enter number of times: ";
+        cin >> times;
+        cout<<"you what me to say this: "<<times<<endl;
+
+        string confirm_T;
+        cout<<"is this correect(y/n): ";
+        cin>>confirm_T;
+        if(confirm_T=="y"){
+            break;
+        }
+    }
+    displayresult(What_to_say, times);
+return 0;
+}
+
+void displayresult(const string& message, int times) {
+        for( int i = 0; i<times; ++i) {
+            cout<<i<<" "<<message<<endl;
         }
     }
