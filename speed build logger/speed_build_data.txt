@@ -1,2 +1,4 @@
+2024-01-05 21:57:00 - 0H 19M 57S - re-builded repetor in 19M.57S.13MS. (Manually added on 2024-01-14)
 2024-01-12 22:39:55 - 0H 11M 25S
 2024-01-13 21:14:22 - 0H 6M 58S
+2024-01-14 17:05:14 - 0H 14M 58S - today I speed build a new project. which is located in the folder "math table"

@@ -1,41 +1,55 @@
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <ctime>
 
-void writeToFile(int hour, int min, int sec, const char *timestamp);
+using namespace std;
+
+void writeToFile(int hour, int min, int sec, const string& timestamp, const string& additionalInfo);
 
 int main() {
     int hour, min, sec;
+    string additional_information;
 
-    while (1) {
-        printf("Congratulations on your speed build today!\n");
+    while (true) {
+        cout << "Congratulations on your speed build today!" << endl;
 
-        printf("Enter hours: ");
-        scanf("%d", &hour);
+        cout << "Enter hours: ";
+        cin >> hour;
 
-        printf("Enter minutes: ");
-        scanf("%d", &min);
+        cout << "Enter minutes: ";
+        cin >> min;
 
-        printf("Enter seconds: ");
-        scanf("%d", &sec);
+        cout << "Enter seconds: ";
+        cin >> sec;
 
-        printf("So today you completed your speed build in %dH %dM %dS.\n", hour, min, sec);
+        string confirm_additional_information;
+        cout << "Do you have something to add about today's speed build? (y/n): ";
+        cin >> confirm_additional_information;
 
-        char confirm_result[3];
-        printf("Is this correct (y/n): ");
-        scanf("%s", confirm_result);
+        if (confirm_additional_information == "y") {
+            cout << "Write here: ";
+            cin.ignore();  // Clear the newline character from the buffer
+            getline(cin, additional_information);
+        }
 
-        if (strcmp(confirm_result, "y") == 0) {
+        cout << "So today you completed your speed build in " << hour << "H " << min << "M " << sec << "S." << endl;
+
+        string confirmResult;
+        cout << "Is this correct (y/n): ";
+        cin >> confirmResult;
+
+        if (confirmResult == "y") {
             // Get current date and time
-            time_t t = time(NULL);
-            struct tm *tm_info = localtime(&t);
+            time_t t = time(nullptr);
+            tm* tm_info = localtime(&t);
 
             // Format timestamp
             char timestamp[20];
             strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", tm_info);
 
-            // Write to file with timestamp
-            writeToFile(hour, min, sec, timestamp);
+            // Write to file with timestamp and additional information
+            writeToFile(hour, min, sec, timestamp, additional_information);
             break;
         }
     }
@@ -43,13 +57,17 @@ int main() {
     return 0;
 }
 
-void writeToFile(int hour, int min, int sec, const char *timestamp) {
-    FILE *file = fopen("speed_build_data.txt", "a");
-    if (file != NULL) {
-        fprintf(file, "%s - %dH %dM %dS\n", timestamp, hour, min, sec);
-        fclose(file);
-        printf("Data written to file successfully.\n");
+void writeToFile(int hour, int min, int sec, const string& timestamp, const string& additionalInfo) {
+    ofstream file("speed_build_data.txt", ios::app);
+    if (file.is_open()) {
+        file << timestamp << " - " << hour << "H " << min << "M " << sec << "S";
+        if (!additionalInfo.empty()) {
+            file << " - " << additionalInfo;
+        }
+        file << endl;
+        file.close();
+        cout << "Data written to file successfully." << endl;
     } else {
-        printf("Error opening file for writing.\n");
+        cerr << "Error opening file for writing." << endl;
     }
 }
