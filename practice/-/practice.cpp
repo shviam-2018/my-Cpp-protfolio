@@ -58,7 +58,7 @@ int main() {
 }
 
 void writeToFile(int hour, int min, int sec, const string& timestamp, const string& additionalInfo) {
-    ofstream file("speed_build_data.txt", ios::app);
+    ofstream file("new_speed_logger_test.txt", ios::app);
     if (file.is_open()) {
         file << timestamp << " - " << hour << "H " << min << "M " << sec << "S";
         if (!additionalInfo.empty()) {
