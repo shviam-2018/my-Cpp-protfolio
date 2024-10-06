@@ -6,7 +6,6 @@ int main() {
     float base;
     float side;
     float result;
-
     while (true) {
         cout << "Enter the value of base: ";
         cin >> base;
